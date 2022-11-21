@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {# a completer BDD #}
+    <section class="add-customer">
+        <h1>Modifier un client</h1>
+        <div class="flex-add-customer">
+            <ul>
+                <li id="infoBtn" class="btn btn-link">
+                    Informations générales
+                </li>
+                <li id="contactBtn" class="btn btn-link">
+                    Contact
+                </li>
+            </ul>
+        </div>
+        
+        <div id="info">
+            <h2>Informations générales</h2>
+            {# a completer BDD #}
+        </div>
+
+        <div id="contact">
+            <h2>Contact</h2>
+            
+            {# a completer BDD #}
+        </div>
+        
+    </section>
+{% endblock %}
+
+{% block js %}
+    <script src="{{asset('infoContact.js')}}"></script>
+{% endblock %}

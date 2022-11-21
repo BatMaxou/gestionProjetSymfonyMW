@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {# a completer BDD #}
+    <section class="add-customer">
+        <h1>Liste des clients <a href="{{path('addCustomer')}}"><i class="bi bi-plus-circle" title="Ajouter un nouveau contact"></i></a></h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Code Interne</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Notes/remarques</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {# a completer BDD #}
+            </tbody>
+        </table>
+    </section>
+{% endblock %}

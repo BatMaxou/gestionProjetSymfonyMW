@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {# a completer BDD #}
+    <section class="add-project">
+        <h1>Modifier le projet</h1>
+        <div class="flex-add-project">
+            <ul>
+                <li id="infoBtn" class="btn btn-link">
+                    Informations générales
+                </li>
+                <li id="contactBtn" class="btn btn-link">
+                    Environnement
+                </li>
+            </ul>
+        </div>  
+        
+        <div id="info">
+            <h2>Informations générales</h2>
+            {# a completer BDD #}
+        </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+    <script src="{{asset('infoContact.js')}}"></script>
+{% endblock %}
