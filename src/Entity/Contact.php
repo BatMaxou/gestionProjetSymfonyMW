@@ -18,14 +18,14 @@ class Contact
     #[ORM\Column(type: 'integer', unique: true)]
     private int $id;
 
-    #[ORM\Column(length: 255)]
-    private string $email;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $email = null;
 
-    #[ORM\Column(length: 255)]
-    private string $phoneNumber;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $phoneNumber = null;
 
-    #[ORM\Column(length: 255)]
-    private string $role;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $role = null;
 
     #[ORM\ManyToOne(targetEntity: Host::class, inversedBy: 'contacts')]
     private Host $host;

@@ -24,17 +24,17 @@ class Project
     #[ORM\Column(length: 255)]
     private string $code;
 
-    #[ORM\Column(length: 255)]
-    private string $lastPassFolder;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $lastPassFolder = null;
 
-    #[ORM\Column(length: 255)]
-    private string $linkMockUps;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $linkMockUps = null;
 
     #[ORM\Column(type: 'boolean')]
     private bool $managedServer;
 
-    #[ORM\Column(type: 'text')]
-    private string $notes;
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $notes = null;
 
     #[ORM\ManyToOne(targetEntity: Host::class, inversedBy: 'projects')]
     #[ORM\JoinColumn(nullable: false)]

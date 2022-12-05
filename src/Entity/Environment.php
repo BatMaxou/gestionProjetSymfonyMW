@@ -14,23 +14,23 @@ class Environment
     #[ORM\Column(type: 'integer', unique: true)]
     private int $id;
 
-    #[ORM\Column(length: 255)]
-    private string $name;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
-    private string $link;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $link = null;
 
-    #[ORM\Column(length: 255)]
-    private string $ipAddress;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $ipAddress = null;
 
-    #[ORM\Column(length: 255)]
-    private int $sshPort;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?int $sshPort = null;
 
-    #[ORM\Column(length: 255)]
-    private string $sshUserName;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $sshUserName = null;
 
-    #[ORM\Column(length: 255)]
-    private string $phpMyAdminLink;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $phpMyAdminLink = null;
 
     #[ORM\Column(type: 'boolean')]
     private bool $ipRestriction;

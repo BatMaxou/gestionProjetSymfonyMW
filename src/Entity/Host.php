@@ -19,8 +19,8 @@ class Host
     #[ORM\Column(length: 255, unique: true)]
     private string $name;
 
-    #[ORM\Column(type: 'text')]
-    private string $notes;
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $notes = null;
 
     #[ORM\OneToMany(targetEntity: Contact::class, mappedBy: 'host')]
     private array $contacts;
