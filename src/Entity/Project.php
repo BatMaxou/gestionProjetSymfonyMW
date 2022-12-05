@@ -45,7 +45,7 @@ class Project
     private Customer $customer;
 
     #[ORM\OneToMany(targetEntity: Environment::class, mappedBy: 'project')]
-    private array $environments;
+    private ArrayCollection $environments;
 
     public function __construct(
         int $id,
@@ -68,7 +68,7 @@ class Project
         $this->host = $host;
         $this->customer = $customer;
 
-        $this->environments = array();
+        $this->environments = new ArrayCollection();
     }
 
     public function getId(): int
@@ -150,5 +150,14 @@ class Project
     public function setCustomer(Customer $newCustomer): void
     {
         $this->customer = $newCustomer;
+    }
+
+    public function getEnvironments(): ArrayCollection
+    {
+        return $this->environments;
+    }
+    public function setEnvironments(ArrayCollection $environments): void
+    {
+        $this->environments = $environments;
     }
 }
