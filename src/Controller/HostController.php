@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\HostRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,9 +10,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HostController extends AbstractController
 {
     #[Route(path: '/host', name: 'host')]
-    public function host(): Response
+    public function host(HostRepository $repository): Response
     {
-        return $this->render('host/hosts.html.twig');
+        return $this->render('host/hosts.html.twig', [
+            'hosts' => $repository->getAll()
+        ]);
     }
 
     #[Route(path: '/host/add', name: 'addHost')]

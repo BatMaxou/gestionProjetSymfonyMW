@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'host')]
@@ -24,10 +24,10 @@ class Host
     private ?string $notes = null;
 
     #[ORM\OneToMany(targetEntity: Contact::class, mappedBy: 'host')]
-    private ArrayCollection $contacts;
+    private Collection $contacts;
 
     #[ORM\OneToMany(targetEntity: Project::class, mappedBy: 'host')]
-    private ArrayCollection $projects;
+    private Collection $projects;
 
     public function __construct(
         int $id,
@@ -40,8 +40,8 @@ class Host
         $this->name = $name;
         $this->notes = $notes;
 
-        $this->contacts = new ArrayCollection();
-        $this->projects = new ArrayCollection();
+        $this->contacts = new Collection();
+        $this->projects = new Collection();
     }
 
     public function getId(): int
@@ -80,20 +80,20 @@ class Host
         $this->notes = $newNotes;
     }
 
-    public function getContacts(): ArrayCollection
+    public function getContacts(): Collection
     {
         return $this->contacts;
     }
-    public function setContacts(ArrayCollection $contacts): void
+    public function setContacts(Collection $contacts): void
     {
         $this->contacts = $contacts;
     }
 
-    public function getProjects(): ArrayCollection
+    public function getProjects(): Collection
     {
         return $this->projects;
     }
-    public function setProjects(ArrayCollection $projects): void
+    public function setProjects(Collection $projects): void
     {
         $this->projects = $projects;
     }
