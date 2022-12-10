@@ -14,7 +14,7 @@ class EnvironmentRepository extends ServiceEntityRepository
         parent::__construct($registry, Environment::class);
     }
 
-    public function getAll(): ?Collection
+    public function getAll(): ?array
     {
         return $this->findAll();
     }

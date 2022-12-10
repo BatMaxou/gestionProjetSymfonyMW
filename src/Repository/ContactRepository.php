@@ -14,7 +14,7 @@ class ContactRepository extends ServiceEntityRepository
         parent::__construct($registry, Contact::class);
     }
 
-    public function getAll(): ?Collection
+    public function getAll(): ?array
     {
         return $this->findAll();
     }
