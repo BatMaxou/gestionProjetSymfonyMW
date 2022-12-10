@@ -15,7 +15,47 @@
                 </tr>
             </thead>
             <tbody>
-                {# a completer BDD #}
+            {% for project in projects %}
+                
+                <tr>
+                    <th scope="row">{{project.code}}</th>
+                    <td>{{project.name}}</td>
+                    <td>{{project.notes}}</td>
+                    <td>
+                        <a href="{{path('updateProject', {id: project.id})}}" class="btn btn-link">Modifier</a> 
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{project.id}}">Supprimer le projet</button>
+                        <div class="modal fade" id="deleteModal{{project.id}}" tabindex="-1" aria-labelledby="deleteModalLabel{{project.id}}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel{{project.id}}">Supperssion de le projet</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3>Êtes-vous sûr de vouloir supprimer le projet n°{{project.id}}</h3>
+                                        <p>Le projet {{project.name}}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-link" data-bs-dismiss="modal">Annuler la suppression</button>
+                                        <form method="post">
+                                            <input type="hidden" name="id" value="{{project.id}}">
+                                            <input type="hidden" name="name-project" value="{{project.name}}">
+                                            <input type="hidden" name="code" value="{{project.code}}">
+                                            <input type="hidden" name="lastpass_folder" value="{{project.lastPassFolder}}">
+                                            <input type="hidden" name="link_mock_ups" value="{{project.linkMockUps}}">
+                                            <input type="hidden" name="managed_server" value="{{project.managedServer}}">
+                                            <input type="hidden" name="note-project" value="{{project.notes}}">
+                                            <input type="hidden" name="hostt" value="{{project.host.name}}">
+                                            <input type="hidden" name="cust" value="{{project.customer.name}}">
+                                            <button class="btn btn-danger" name="delete-project" type="submit" data-bs-toggle="modal" data-bs-target="#deleteModal{{project.id}}">Supprimer le projet</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
     </section>

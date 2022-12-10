@@ -15,42 +15,41 @@
                 </tr>
             </thead>
             <tbody>
-                <tbody>
-                {% for host in hosts %}
-                    <tr>
-                        <th scope="row">{{host.code}}</th>
-                        <td>{{host.name}}</td>
-                        <td>{{host.notes}}</td>
-                        <td>
-                            <a href="{{path('updateHost', {'id': host.id})}}" class="btn btn-link">Modifier</a> 
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{host.id}}">Supprimer l'hébergeur</button>
-                            <div class="modal fade" id="deleteModal{{host.id}}" tabindex="-1" aria-labelledby="deleteModalLabel{{host.id}}" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteModalLabel{{host.id}}">Supperssion de l'hébergeur</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h3>Êtes-vous sûr de vouloir supprimer l'hébergeur n°{{host.id}}</h3>
-                                            <p>L'hébergeur {{host.name}}</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-link" data-bs-dismiss="modal">Annuler la suppression</button>
-                                            <form method="post">
-                                                <input type="hidden" name="id" value="{{host.id}}">
-                                                <input type="hidden" name="code" value="{{host.code}}">
-                                                <input type="hidden" name="name" value="{{host.name}}">
-                                                <input type="hidden" name="notes" value="{{host.notes}}">
-                                                <button class="btn btn-danger" name="delete-host" type="submit" data-bs-toggle="modal" data-bs-target="#deleteModal{{host.id}}">Supprimer l'hébergeur</button>
-                                            </form>
-                                        </div>
+            {% for host in hosts %}
+                <tr>
+                    <th scope="row">{{host.code}}</th>
+                    <td>{{host.name}}</td>
+                    <td>{{host.notes}}</td>
+                    <td>
+                        <a href="{{path('updateHost', {'id': host.id})}}" class="btn btn-link">Modifier</a> 
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{host.id}}">Supprimer l'hébergeur</button>
+                        <div class="modal fade" id="deleteModal{{host.id}}" tabindex="-1" aria-labelledby="deleteModalLabel{{host.id}}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel{{host.id}}">Supperssion de l'hébergeur</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3>Êtes-vous sûr de vouloir supprimer l'hébergeur n°{{host.id}}</h3>
+                                        <p>L'hébergeur {{host.name}}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-link" data-bs-dismiss="modal">Annuler la suppression</button>
+                                        <form method="post">
+                                            <input type="hidden" name="id" value="{{host.id}}">
+                                            <input type="hidden" name="code" value="{{host.code}}">
+                                            <input type="hidden" name="name" value="{{host.name}}">
+                                            <input type="hidden" name="notes" value="{{host.notes}}">
+                                            <button class="btn btn-danger" name="delete-host" type="submit" data-bs-toggle="modal" data-bs-target="#deleteModal{{host.id}}">Supprimer l'hébergeur</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        </td>
-                    </tr>
-                {% endfor %}
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
     </section>

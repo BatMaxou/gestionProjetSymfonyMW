@@ -15,7 +15,41 @@
                 </tr>
             </thead>
             <tbody>
-                {# a completer BDD #}
+            {% for customer in customers %}
+                <tr>
+                    <th scope="row">{{customer.code}}</th>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.notes}}</td>
+                    <td>
+                        <a href="{{path('updateCustomer', {id: customer.id})}}" class="btn btn-link">Modifier</a> 
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{customer.id}}">Supprimer le client</button>
+                        <div class="modal fade" id="deleteModal{{customer.id}}" tabindex="-1" aria-labelledby="deleteModalLabel{{customer.id}}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel{{customer.id}}">Supperssion du client</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3>Êtes-vous sûr de vouloir supprimer le client n°{{customer.id}}</h3>
+                                        <p>Le client {{customer.name}}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-link" data-bs-dismiss="modal">Annuler la suppression</button>
+                                        <form method="post">
+                                            <input type="hidden" name="id" value="{{customer.id}}">
+                                            <input type="hidden" name="code" value="{{customer.code}}">
+                                            <input type="hidden" name="name" value="{{customer.name}}">
+                                            <input type="hidden" name="notes" value="{{customer.notes}}">
+                                            <button class="btn btn-danger" name="delete-contact" type="submit" data-bs-toggle="modal" data-bs-target="#deleteModal{{customer.id}}">Supprimer le contact</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
     </section>

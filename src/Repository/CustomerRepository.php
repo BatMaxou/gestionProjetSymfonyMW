@@ -14,7 +14,7 @@ class CustomerRepository extends ServiceEntityRepository
         parent::__construct($registry, Customer::class);
     }
 
-    public function getAll(): ?Collection
+    public function getAll(): ?array
     {
         return $this->findAll();
     }

@@ -8,6 +8,7 @@ use App\{
 };
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'project')]
@@ -45,7 +46,7 @@ class Project
     private Customer $customer;
 
     #[ORM\OneToMany(targetEntity: Environment::class, mappedBy: 'project')]
-    private ArrayCollection $environments;
+    private Collection $environments;
 
     public function __construct(
         int $id,
@@ -68,7 +69,7 @@ class Project
         $this->host = $host;
         $this->customer = $customer;
 
-        $this->environments = new ArrayCollection();
+        $this->environments = new Collection();
     }
 
     public function getId(): int
@@ -152,11 +153,11 @@ class Project
         $this->customer = $newCustomer;
     }
 
-    public function getEnvironments(): ArrayCollection
+    public function getEnvironments(): Collection
     {
         return $this->environments;
     }
-    public function setEnvironments(ArrayCollection $environments): void
+    public function setEnvironments(Collection $environments): void
     {
         $this->environments = $environments;
     }

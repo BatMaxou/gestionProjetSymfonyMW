@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ProjectRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,9 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProjectController extends AbstractController
 {
     #[Route(path: '/project', name: 'project')]
-    public function project(): Response
+    public function project(ProjectRepository $repository): Response
     {
-        return $this->render('project/projects.html.twig');
+        $projects = $repository->getAll();
+
+        return $this->render('project/projects.html.twig', [
+            'projects' => $projects
+        ]);
     }
 
     #[Route(path: '/project/add', name: 'addProject')]

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CustomerRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,9 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CustomerController extends AbstractController
 {
     #[Route(path: '/customer', name: 'customer')]
-    public function customer(): Response
+    public function customer(CustomerRepository $repository): Response
     {
-        return $this->render('customer/customers.html.twig');
+        $customers = $repository->getAll();
+
+        return $this->render('customer/customers.html.twig', [
+            'customers' => $customers
+        ]);
     }
 
     #[Route(path: '/customer/add', name: 'addCustomer')]
