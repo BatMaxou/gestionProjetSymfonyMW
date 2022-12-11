@@ -12,15 +12,27 @@
         </div>  
         
         <div id="info">
-            <form action="" method="post">
+            {{ form_start(form) }}
                 <div class="form-floating mb-3">
-                    <input type="text" name="name-project" class="form-control" id="floatingName" placeholder="Site public" value="{# A COMPLETER #}">
-                    <label for="floatingName">Nom du projet</label>
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}, {'attr': {'id': 'floatingName'}}) }}
+                    {{ form_label(form.name, 'Nom du projet', {'label_attr': {'for': 'floatingCode'}}) }}
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="code-intra" class="form-control" id="floatingCode" disabled placeholder=" ">
-                    <label for="floatingCode">Code interne généré automatiquement</label>
+                    {{ form_widget(form.code, {'attr': {'class': 'form-control'}}, {'attr': {'id': 'floatingCode'}}) }}
+                    {{ form_label(form.code, 'Nom interne généré automatiquement', {'label_attr': {'for': 'floatingCode'}}) }}
                 </div>
+                <div class="form-floating mb-3">
+                    {{ form_row(form.code, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.notes, {'attr': {'class': 'form-control'}}, {'attr': {'id': 'floatingNote'}}) }}
+                    {{ form_label(form.notes, 'Notes ou remarques', {'label_attr': {'for': 'floatingNote'}}) }}
+                </div>
+                    {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary mb-3'}}) }}
+                    {{ form_widget(form.reset, {'attr': {'class': 'btn btn-secondary mb-3'}}) }}
+            {{ form_end(form) }}
+        
                 <label for="listCustomer" class="form-label">Liste des clients</label>
                 <input class="form-control mb-3" name="customer_id" list="datalistOptionsCustomer" id="listCustomer" placeholder="Rechercher un client" value="{# A COMPLETER #}">
                 <datalist id="datalistOptionsCustomer">

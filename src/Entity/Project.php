@@ -46,7 +46,7 @@ class Project
     private Customer $customer;
 
     #[ORM\OneToMany(targetEntity: Environment::class, mappedBy: 'project')]
-    private Collection $environments;
+    private ?Collection $environments;
 
     public function __construct(
         int $id,
@@ -69,7 +69,7 @@ class Project
         $this->host = $host;
         $this->customer = $customer;
 
-        $this->environments = new Collection();
+        $this->environments = null;
     }
 
     public function getId(): int
@@ -126,11 +126,11 @@ class Project
         $this->code = $newCode;
     }
 
-    public function getNotes(): string
+    public function getNotes(): ?string
     {
         return $this->notes;
     }
-    public function setNotes(string $newNotes): void
+    public function setNotes(?string $newNotes = null): void
     {
         $this->notes = $newNotes;
     }
@@ -153,11 +153,11 @@ class Project
         $this->customer = $newCustomer;
     }
 
-    public function getEnvironments(): Collection
+    public function getEnvironments(): ?Collection
     {
         return $this->environments;
     }
-    public function setEnvironments(Collection $environments): void
+    public function setEnvironments(?Collection $environments = null): void
     {
         $this->environments = $environments;
     }

@@ -15,6 +15,10 @@
                 </tr>
             </thead>
             <tbody>
+            {# {{ form_start(ok) }}
+
+            {% set saveBtn = form_widget(ok.delete) %}
+            {{dump(ok)}} #}
             {% for host in hosts %}
                 <tr>
                     <th scope="row">{{host.code}}</th>
@@ -36,13 +40,18 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-link" data-bs-dismiss="modal">Annuler la suppression</button>
-                                        <form method="post">
+                                        {# <form method="post">
                                             <input type="hidden" name="id" value="{{host.id}}">
                                             <input type="hidden" name="code" value="{{host.code}}">
                                             <input type="hidden" name="name" value="{{host.name}}">
                                             <input type="hidden" name="notes" value="{{host.notes}}">
                                             <button class="btn btn-danger" name="delete-host" type="submit" data-bs-toggle="modal" data-bs-target="#deleteModal{{host.id}}">Supprimer l'hébergeur</button>
-                                        </form>
+                                        </form> #}
+                                        
+
+                                        {# {{saveBtn}} #}
+                                                {# {{ form_row(ok.btn, { 'label': 'Supprimer l\'hébergeur' }, {'attr': {'class': 'btn btn-primary mb-3'}}) }} #}
+                                        {# {{ form_end(ok) }} #}
                                     </div>
                                 </div>
                             </div>

@@ -24,10 +24,10 @@ class Customer
     private ?string $notes = null;
 
     #[ORM\OneToMany(targetEntity: Contact::class, mappedBy: 'customer')]
-    private Collection $contacts;
+    private ?Collection $contacts;
 
     #[ORM\OneToMany(targetEntity: Project::class, mappedBy: 'customer')]
-    private Collection $projects;
+    private ?Collection $projects;
     
     public function __construct(
         int $id,
@@ -40,8 +40,8 @@ class Customer
         $this->name = $name;
         $this->notes = $notes;
 
-        $this->contacts = new Collection();
-        $this->projects = new Collection();
+        $this->contacts = null;
+        $this->projects = null;
     }
 
     public function getId(): int
@@ -71,29 +71,29 @@ class Customer
         $this->code = $newCode;
     }
 
-    public function getNotes(): string
+    public function getNotes(): ?string
     {
         return $this->notes;
     }
-    public function setNotes(string $newNotes): void
+    public function setNotes(?string $newNotes = null): void
     {
         $this->notes = $newNotes;
     }
 
-    public function getContacts(): Collection
+    public function getContacts(): ?Collection
     {
         return $this->contacts;
     }
-    public function setContacts(Collection $contacts): void
+    public function setContacts(?Collection $contacts = null): void
     {
         $this->contacts = $contacts;
     }
 
-    public function getProjects(): Collection
+    public function getProjects(): ?Collection
     {
         return $this->projects;
     }
-    public function setProjects(Collection $projects): void
+    public function setProjects(?Collection $projects = null): void
     {
         $this->projects = $projects;
     }

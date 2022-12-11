@@ -17,7 +17,22 @@
         
         <div id="info">
             <h2>Informations générales</h2>
-            {# a completer BDD #}
+            {{ form_start(form) }}
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}, {'attr': {'id': 'floatingName'}}) }}
+                    {{ form_label(form.name, 'Nom du client', {'label_attr': {'for': 'floatingCode'}}) }}
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.code, {'attr': {'class': 'form-control'}}, {'attr': {'id': 'floatingCode'}}) }}
+                    {{ form_label(form.code, 'Nom interne généré automatiquement', {'label_attr': {'for': 'floatingCode'}}) }}
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.notes, {'attr': {'class': 'form-control'}}, {'attr': {'id': 'floatingNote'}}) }}
+                    {{ form_label(form.notes, 'Notes ou remarques', {'label_attr': {'for': 'floatingNote'}}) }}
+                </div>
+                    {{ form_row(form.submit, { 'label': 'Modifier le client' }, {'attr': {'class': 'btn btn-primary mb-3'}}) }}
+                    {{ form_row(form.reset, { 'label': 'Annuler la modification' }, {'attr': {'class': 'btn btn-secondary mb-3'}}) }}
+            {{ form_end(form) }}
         </div>
 
         <div id="contact">

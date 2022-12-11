@@ -16,23 +16,22 @@
         </div>  
         
         <div id="info">
-            <form action="" method="post">
+            {{ form_start(form) }}
                 <div class="form-floating mb-3">
-                    <input type="text" name="name-customer" class="form-control" id="floatingName" placeholder="Jean Dupont" value="{# a completer BDD #}">
-                    <label for="floatingName">Nom du client</label>
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}, {'attr': {'id': 'floatingName'}}) }}
+                    {{ form_label(form.name, 'Nom de l\'hébergeur', {'label_attr': {'for': 'floatingCode'}}) }}
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="code-intra" class="form-control" id="floatingCode" disabled placeholder=" ">
-                    <label for="floatingCode">Code interne généré automatiquement</label>
+                    {{ form_widget(form.code, {'attr': {'class': 'form-control'}}, {'attr': {'id': 'floatingCode'}}) }}
+                    {{ form_label(form.code, 'Nom interne généré automatiquement', {'label_attr': {'for': 'floatingCode'}}) }}
                 </div>
                 <div class="form-floating mb-3">
-                    <textarea class="form-control" name="note-customer" placeholder="Notes/Remarques" id="floatingNote" style="height: 100px">{# a completer BDD #}</textarea>
-                    <label for="floatingNote">Notes ou remarques</label>
+                    {{ form_widget(form.notes, {'attr': {'class': 'form-control'}}, {'attr': {'id': 'floatingNote'}}) }}
+                    {{ form_label(form.notes, 'Notes ou remarques', {'label_attr': {'for': 'floatingNote'}}) }}
                 </div>
-                <button class="btn btn-secondary mb-3" type="reset">Annuler l'ajout du client</button>
-                <button class="btn btn-primary mb-3" name="add-customer" type="submit">Ajouter le client</button>
-                {# a completer BDD #}
-            </form>
+                    {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary mb-3'}}) }}
+                    {{ form_widget(form.reset, {'attr': {'class': 'btn btn-secondary mb-3'}}) }}
+            {{ form_end(form) }}
         </div>
         <div id="contact">
             <form action="" method="post">
